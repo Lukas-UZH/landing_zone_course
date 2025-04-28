@@ -28,7 +28,7 @@ jobs:
           az deployment sub create \
             --name Deployment-$(date +"%Y-%m-%dT%H-%M-%S") \
             --template-file resource-group.bicep \
-            --location westeurope \
+            --location switzerlandnorth \
             --parameters \
-                location=westeurope \
+                location=switzerlandnorth \
                 stage=dev
