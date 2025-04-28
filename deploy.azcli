@@ -1,0 +1,16 @@
+LOCATION='switzerlandnorth'
+
+az deployment sub create \
+  --name myDeployment \
+  --location $LOCATION \
+  --template-file resource-group.bicep \
+  --parameters \
+        location=$LOCATION \
+        stage='dev'
+
+az deployment group create \
+  --name myDeploymentst \
+  --resource-group rg-course-01-dev \
+  --template-file storage.bicep \
+  --parameters \
+        stage='dev'
