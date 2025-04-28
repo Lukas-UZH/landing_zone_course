@@ -32,3 +32,10 @@ jobs:
             --parameters \
                 location=switzerlandnorth \
                 stage=dev
+
+          az deployment group create \
+            --name myDeploymentst \
+            --resource-group rg-course-01-dev \
+            --template-file storage.bicep \
+            --parameters \
+                  stage='dev'
