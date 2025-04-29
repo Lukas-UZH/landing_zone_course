@@ -41,3 +41,12 @@ jobs:
             --template-file storage.bicep \
             --parameters \
                   stage='dev'
+
+      - name: 'Deploy to Azure - ACR'
+        run: |
+          az deployment group create \
+            --name myDeploymentst \
+            --resource-group rg-course-02-dev \
+            --template-file acr.bicep \
+            --parameters \
+                  stage='dev'
