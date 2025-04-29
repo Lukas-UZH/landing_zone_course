@@ -47,6 +47,4 @@ jobs:
           az deployment group create \
             --name Deployment-$(date +"%Y-%m-%dT%H-%M-%S") \
             --resource-group rg-course-02-dev \
-            --template-file acr.bicep \
-            --parameters \
-                  stage='dev'
+            --template-file acr.bicep
