@@ -1,7 +1,8 @@
 param location string = resourceGroup().location
-param projectName 'acrlmalin'
+param projectName string = 'acrlmalin'
 // param tags 'my-tag'
-param adminPrincipalId '658cb70c-2f44-4a3f-a650-c4671f65eb00'
+param adminPrincipalId string = '658cb70c-2f44-4a3f-a650-c4671f65eb00'
+param userPrincipalId string = '199c47e3-c60b-4efc-b2de-d8d35d7a4201'
 
 var abbrs = loadJsonContent('abbreviations.json')
 var roles = loadJsonContent('azure-roles.json')
@@ -42,6 +43,15 @@ resource registryPullAssignment 'Microsoft.Authorization/roleAssignments@2022-04
   scope: registry
   properties: {
     principalId: adminPrincipalId
+    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', roles.AcrPull)
+  }
+}
+
+resource registryPullAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(registry.id, adminPrincipalId, 'pull')
+  scope: registry
+  properties: {
+    principalId: userPrincipalId
     roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', roles.AcrPull)
   }
 }

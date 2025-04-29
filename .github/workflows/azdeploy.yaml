@@ -48,6 +48,3 @@ jobs:
             --name Deployment-$(date +"%Y-%m-%dT%H-%M-%S") \
             --resource-group rg-course-02-dev \
             --template-file acr.bicep
-            --parameters \
-                  adminPrincipalId='658cb70c-2f44-4a3f-a650-c4671f65eb00' \
-                  projectName='acrlmalin'
