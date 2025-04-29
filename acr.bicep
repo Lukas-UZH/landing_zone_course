@@ -48,7 +48,7 @@ resource registryPullAssignment 'Microsoft.Authorization/roleAssignments@2022-04
 }
 
 resource registryPullAssignment2 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(registry.id, adminPrincipalId, 'pull')
+  name: guid(registry.id, adminPrincipalId, 'pull2')
   scope: registry
   properties: {
     principalId: userPrincipalId
