@@ -46,23 +46,23 @@ resource registryPullAssignment 'Microsoft.Authorization/roleAssignments@2022-04
   }
 }
 
-// Create a user-assigned managed identity.
-// This identity can be used to pull images from the container registry.
-resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2022-01-31-preview' = {
-  name: '${abbrs.managedIdentityUserAssignedIdentities}cr-${uniqueString(projectName)}'
-  location: location
-  // tags: tags
-}
+// // Create a user-assigned managed identity.
+// // This identity can be used to pull images from the container registry.
+// resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2022-01-31-preview' = {
+//   name: '${abbrs.managedIdentityUserAssignedIdentities}cr-${uniqueString(projectName)}'
+//   location: location
+//   // tags: tags
+// }
 
-// Assign the 'AcrPull' role to the managed identity.
-resource registryPullAssignmentManagedIdentity 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(registry.id, '-pull')
-  scope: registry
-  properties: {
-    principalId: identity.properties.principalId
-    principalType: 'ServicePrincipal'
-    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', roles.AcrPull)
-  }
-}
+// // Assign the 'AcrPull' role to the managed identity.
+// resource registryPullAssignmentManagedIdentity 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+//   name: guid(registry.id, '-pull')
+//   scope: registry
+//   properties: {
+//     principalId: identity.properties.principalId
+//     principalType: 'ServicePrincipal'
+//     roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', roles.AcrPull)
+//   }
+// }
 
 output registryName string = registry.name
