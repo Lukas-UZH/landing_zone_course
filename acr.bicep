@@ -1,7 +1,7 @@
 param location string = resourceGroup().location
-param projectName acr-lmalin
-param tags my-tag
-param adminPrincipalId 658cb70c-2f44-4a3f-a650-c4671f65eb00
+param projectName 'acrlmalin'
+param tags 'my-tag'
+param adminPrincipalId '658cb70c-2f44-4a3f-a650-c4671f65eb00'
 
 var abbrs = loadJsonContent('abbreviations.json')
 var roles = loadJsonContent('azure-roles.json')
