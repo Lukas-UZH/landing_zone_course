@@ -1,6 +1,6 @@
 param location string = resourceGroup().location
 param projectName 'acrlmalin'
-param tags 'my-tag'
+// param tags 'my-tag'
 param adminPrincipalId '658cb70c-2f44-4a3f-a650-c4671f65eb00'
 
 var abbrs = loadJsonContent('abbreviations.json')
@@ -10,7 +10,7 @@ var roles = loadJsonContent('azure-roles.json')
 resource registry 'Microsoft.ContainerRegistry/registries@2024-11-01-preview' = {
   name: '${abbrs.containerRegistryRegistries}${uniqueString(projectName)}'
   location: location
-  tags: tags
+  // tags: tags
   sku: {
     name: 'Basic' // Choose a different SKU if needed.
                   // Consider making this a parameter if you need more flexibility.
@@ -51,7 +51,7 @@ resource registryPullAssignment 'Microsoft.Authorization/roleAssignments@2022-04
 resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2022-01-31-preview' = {
   name: '${abbrs.managedIdentityUserAssignedIdentities}cr-${uniqueString(projectName)}'
   location: location
-  tags: tags
+  // tags: tags
 }
 
 // Assign the 'AcrPull' role to the managed identity.

@@ -23,29 +23,29 @@ jobs:
           tenant-id: b1a8ac21-915f-4351-a075-b30346a974af
           subscription-id: 8599de01-30c3-481e-885e-5d5313b8548b
 
-      - name: 'Deploy to Azure - Resource Group'
-        run: |
-          az deployment sub create \
-            --name Deployment-$(date +"%Y-%m-%dT%H-%M-%S") \
-            --template-file resource-group.bicep \
-            --location switzerlandnorth \
-            --parameters \
-                location=switzerlandnorth \
-                stage=dev
+      # - name: 'Deploy to Azure - Resource Group'
+      #   run: |
+      #     az deployment sub create \
+      #       --name Deployment-$(date +"%Y-%m-%dT%H-%M-%S") \
+      #       --template-file resource-group.bicep \
+      #       --location switzerlandnorth \
+      #       --parameters \
+      #           location=switzerlandnorth \
+      #           stage=dev
 
-      - name: 'Deploy to Azure - Storage Account'
-        run: |
-          az deployment group create \
-            --name myDeploymentst \
-            --resource-group rg-course-01-dev \
-            --template-file storage.bicep \
-            --parameters \
-                  stage='dev'
+      # - name: 'Deploy to Azure - Storage Account'
+      #   run: |
+      #     az deployment group create \
+      #       --name Deployment-$(date +"%Y-%m-%dT%H-%M-%S") \
+      #       --resource-group rg-course-01-dev \
+      #       --template-file storage.bicep \
+      #       --parameters \
+      #             stage='dev'
 
       - name: 'Deploy to Azure - ACR'
         run: |
           az deployment group create \
-            --name myDeploymentst \
+            --name Deployment-$(date +"%Y-%m-%dT%H-%M-%S") \
             --resource-group rg-course-02-dev \
             --template-file acr.bicep \
             --parameters \
